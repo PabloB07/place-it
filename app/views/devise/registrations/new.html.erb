@@ -1,0 +1,46 @@
+<!-- Container -->
+		<div class="container mx-auto">
+			<div class="flex justify-center px-6 my-12">
+				<!-- Row -->
+				<div class="w-full xl:w-3/4 lg:w-11/12 flex">
+					<!-- Col -->
+          <%= image_tag "think.gif", alt: "logo", width: 400, height: 00, class: "w-full max-w-xl rounded-lg h-auto bg-white-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" %>
+					<!-- Col -->
+					<div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
+						<h3 class="pt-4 text-2xl text-center font-bold">Registrate en PlaceIt</h3>
+          <%= form_for(resource, as: resource_name, class: "px-8 pt-6 pb-8 mb-4 bg-white rounded", url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <div class="field mb-4">
+              <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-700" %>
+              <%= f.email_field :email, placeholder: "Ingresa tu mail", class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline", autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field mb-4">
+              <%= f.label :password, class: "block mb-2 text-sm font-medium text-gray-700"%>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> Caracteres mínimo)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", placeholder: "**********", class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" %>
+            </div>
+
+            <div class="field mb-4">
+              <%= f.label :password_confirmation, class: "block mb-2 text-sm font-medium text-gray-700" %><br />
+              <%= f.password_field :password_confirmation, placeholder: "**********", class: "w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline", autocomplete: "new-password" %>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Registrarme Ahora", class: "bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105"  %>
+            </div>
+            <% end %>
+            <div class="flex mt-7 justify-center items-center">
+            <label class="mr-2" >¿Ya tienes cuenta?</label>
+            </hr>
+            <a href="#" class=" text-blue-500 transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105">
+              <%= render "devise/shared/links", class: "text-blue-500 transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105" %>
+            </a>
+					</div>
+				</div>
+			</div>
+		</div>
+  <!-- Container-->

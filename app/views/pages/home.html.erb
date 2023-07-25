@@ -1,0 +1,30 @@
+<% if user_signed_in? %>
+<div class="flex justify-center items-center">
+      <%= link_to "Desconectarme..", destroy_user_session_path, class: "mr-2 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800", data: {turbo_method: :delete} %>
+</div>
+  <div data-controller="pixels" class=" mb-6 text-center">
+    <input class="text-center block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        id="color"
+        placeholder="Colores en inglés, escribe uno: white, red, blue, purple, brown, black, yellow, orange."
+        type="text"
+        data-pixels-target="color"
+        data-action="change->pixels#loadColor"
+    value="<%= current_user.get_last_pixel_color %>">
+    <canvas id="background"
+        data-pixels-target="background"
+        style="position:absolute;"></canvas>
+    <canvas id="preview"
+        data-pixels-target="canvas"
+        data-action="click->pixels#placePixel mousemove->pixels#mouseMove"
+      style="position:absolute;"></canvas>
+  </div>
+<% else %>
+<div class="flex h-screen mt-7 justify-center items-center">
+  <div class="grid w-80 grid-rows-4 gap-1">
+    <%= image_tag "imagination.gif" %>
+    <p class="font-bold text-gray-700 text-center"> 🖌️ PlaceIt, Pinta tu lugar.🖌️</p>
+      <%= link_to "¡Entrar ahora!", new_user_session_path, class: "bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out transform hover:-translate-x hover:scale-105 text-center" %>
+  </div>
+</div>
+</div>
+<% end %>
